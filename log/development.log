@@ -1858,3 +1858,733 @@ Processing by ListingsController#update as */*
 Completed 200 OK in 23ms (Views: 1.1ms | ActiveRecord: 15.5ms)
 
 
+DEPRECATION WARNING: ActiveSupport.halt_callback_chains_on_return_false= is deprecated and will be removed in Rails 5.2. (called from <top (required)> at /Users/andreacarlotto/wdi/capstone-project/marketplace-back-end/config/initializers/new_framework_defaults.rb:18)
+DEPRECATION WARNING: ActiveSupport.halt_callback_chains_on_return_false= is deprecated and will be removed in Rails 5.2. (called from <top (required)> at /Users/andreacarlotto/wdi/capstone-project/marketplace-back-end/config/initializers/new_framework_defaults.rb:18)
+Started POST "/sign-in/" for 127.0.0.1 at 2017-09-30 15:40:22 -0400
+  [1m[35m (7.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#signin as */*
+  Parameters: {"credentials"=>{"email"=>"", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", ""], ["LIMIT", 1]]
+Completed 401 Unauthorized in 17ms (ActiveRecord: 2.1ms)
+
+
+Started POST "/sign-in/" for 127.0.0.1 at 2017-09-30 15:40:23 -0400
+Processing by UsersController#signin as */*
+  Parameters: {"credentials"=>{"email"=>"", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", ""], ["LIMIT", 1]]
+Completed 401 Unauthorized in 12ms (ActiveRecord: 6.0ms)
+
+
+Started POST "/sign-in/" for 127.0.0.1 at 2017-09-30 15:40:30 -0400
+Processing by UsersController#signin as */*
+  Parameters: {"credentials"=>{"email"=>"acarlotto@cox.net", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "acarlotto@cox.net"], ["LIMIT", 1]]
+  [1m[35mSQL (12.9ms)[0m  [1m[33mUPDATE "users" SET "token" = '8a2770ce1a00f1aca829f7f8c718eac1', "updated_at" = '2017-09-30 19:40:30.019462' WHERE "users"."id" = $1[0m  [["id", 1]]
+[active_model_serializers] Rendered UserLoginSerializer with ActiveModelSerializers::Adapter::Json (4.75ms)
+Completed 200 OK in 116ms (Views: 12.2ms | ActiveRecord: 17.1ms)
+
+
+Started POST "/sign-up/" for 127.0.0.1 at 2017-09-30 15:42:26 -0400
+Processing by UsersController#signup as */*
+  Parameters: {"credentials"=>{"email"=>"tcarlotto@cox.net", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "submit"=>"register"}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (1.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "tcarlotto@cox.net"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "tcarlotto@cox.net"], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with ActiveModel::Errors (0.31ms)
+Completed 400 Bad Request in 152ms (Views: 6.5ms | ActiveRecord: 2.2ms)
+
+
+Started POST "/sign-up/" for 127.0.0.1 at 2017-09-30 15:42:45 -0400
+Processing by UsersController#signup as */*
+  Parameters: {"credentials"=>{"email"=>"o@cox.net", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "submit"=>"register"}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "o@cox.net"], ["LIMIT", 1]]
+  [1m[35mSQL (1.5ms)[0m  [1m[32mINSERT INTO "users" ("email", "token", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["email", "o@cox.net"], ["token", "420ba0e04922897a50fafb49631daa69"], ["password_digest", "$2a$10$1bHLMF9MYgKdgM8lt.HBmeM8FIoPq.1rtYGWIR6Z7yspUL2yyixZ6"], ["created_at", "2017-09-30 19:42:45.225776"], ["updated_at", "2017-09-30 19:42:45.225776"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 AND ("users"."id" != $2) LIMIT $3[0m  [["email", "o@cox.net"], ["id", 3], ["LIMIT", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Json (0.27ms)
+Completed 201 Created in 84ms (Views: 2.2ms | ActiveRecord: 2.8ms)
+
+
+Started POST "/sign-in/" for 127.0.0.1 at 2017-09-30 15:43:02 -0400
+Processing by UsersController#signin as */*
+  Parameters: {"credentials"=>{"email"=>"o@cox.net", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "o@cox.net"], ["LIMIT", 1]]
+  [1m[35mSQL (7.2ms)[0m  [1m[33mUPDATE "users" SET "token" = '871cfb886fbf3e58e2950914bff1981e', "updated_at" = '2017-09-30 19:43:02.276201' WHERE "users"."id" = $1[0m  [["id", 3]]
+[active_model_serializers] Rendered UserLoginSerializer with ActiveModelSerializers::Adapter::Json (0.31ms)
+Completed 200 OK in 83ms (Views: 0.8ms | ActiveRecord: 8.2ms)
+
+
+DEPRECATION WARNING: ActiveSupport.halt_callback_chains_on_return_false= is deprecated and will be removed in Rails 5.2. (called from <top (required)> at /Users/andreacarlotto/wdi/capstone-project/marketplace-back-end/config/initializers/new_framework_defaults.rb:18)
+Started POST "/sign-in/" for 127.0.0.1 at 2017-09-30 16:11:47 -0400
+Processing by UsersController#signin as */*
+  Parameters: {"credentials"=>{"email"=>"acarlotto@cox.net", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "acarlotto@cox.net"], ["LIMIT", 1]]
+  [1m[35mSQL (3.1ms)[0m  [1m[33mUPDATE "users" SET "token" = 'd84111debff770e1fb2be2b5b195d451', "updated_at" = '2017-09-30 20:11:47.625180' WHERE "users"."id" = $1[0m  [["id", 1]]
+[active_model_serializers] Rendered UserLoginSerializer with ActiveModelSerializers::Adapter::Json (1.82ms)
+Completed 200 OK in 115ms (Views: 4.5ms | ActiveRecord: 4.4ms)
+
+
+Started POST "/listings" for 127.0.0.1 at 2017-09-30 16:11:50 -0400
+Processing by ListingsController#create as */*
+  Parameters: {"listing"=>{"name"=>"data.listing.name", "description"=>"data.listing.description"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with ActiveModel::Errors (0.13ms)
+Completed 422 Unprocessable Entity in 80ms (Views: 1.4ms | ActiveRecord: 15.8ms)
+
+
+Started POST "/sign-in/" for 127.0.0.1 at 2017-09-30 16:13:02 -0400
+Processing by UsersController#signin as */*
+  Parameters: {"credentials"=>{"email"=>"acarlotto@cox.net", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "acarlotto@cox.net"], ["LIMIT", 1]]
+  [1m[35mSQL (6.2ms)[0m  [1m[33mUPDATE "users" SET "token" = 'da002a58d6adb2dd22727969202b2b5c', "updated_at" = '2017-09-30 20:13:02.928776' WHERE "users"."id" = $1[0m  [["id", 1]]
+[active_model_serializers] Rendered UserLoginSerializer with ActiveModelSerializers::Adapter::Json (0.68ms)
+Completed 200 OK in 94ms (Views: 1.5ms | ActiveRecord: 6.6ms)
+
+
+Started POST "/listings" for 127.0.0.1 at 2017-09-30 16:13:11 -0400
+Processing by ListingsController#create as */*
+  Parameters: {"listing"=>{"name"=>"data.listing.name", "description"=>"data.listing.description"}}
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with ActiveModel::Errors (0.06ms)
+Completed 422 Unprocessable Entity in 4ms (Views: 0.4ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/sign-in/" for 127.0.0.1 at 2017-09-30 16:15:25 -0400
+Processing by UsersController#signin as */*
+  Parameters: {"credentials"=>{"email"=>"acarlotto@cox.net", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "acarlotto@cox.net"], ["LIMIT", 1]]
+  [1m[35mSQL (1.1ms)[0m  [1m[33mUPDATE "users" SET "token" = '810703fa423b1bab0df75347fa3450d7', "updated_at" = '2017-09-30 20:15:25.998896' WHERE "users"."id" = $1[0m  [["id", 1]]
+[active_model_serializers] Rendered UserLoginSerializer with ActiveModelSerializers::Adapter::Json (2.18ms)
+Completed 200 OK in 111ms (Views: 5.3ms | ActiveRecord: 2.1ms)
+
+
+Started POST "/listings" for 127.0.0.1 at 2017-09-30 16:15:33 -0400
+Processing by ListingsController#create as */*
+  Parameters: {"listing"=>{"user_id"=>"1", "name"=>"data.listing.name", "description"=>"data.listing.description"}}
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (11.4ms)[0m  [1m[32mINSERT INTO "listings" ("name", "description", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "data.listing.name"], ["description", "data.listing.description"], ["created_at", "2017-09-30 20:15:33.931791"], ["updated_at", "2017-09-30 20:15:33.931791"], ["user_id", 1]]
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+[active_model_serializers] Rendered ListingSerializer with ActiveModelSerializers::Adapter::Json (0.7ms)
+Completed 201 Created in 70ms (Views: 9.4ms | ActiveRecord: 13.9ms)
+
+
+Started POST "/sign-in/" for 127.0.0.1 at 2017-09-30 16:17:22 -0400
+Processing by UsersController#signin as */*
+  Parameters: {"credentials"=>{"email"=>"tcarlotto@cox.net", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "tcarlotto@cox.net"], ["LIMIT", 1]]
+  [1m[35mSQL (12.2ms)[0m  [1m[33mUPDATE "users" SET "token" = '91ec5caab97190b343eac672693de670', "updated_at" = '2017-09-30 20:17:22.395889' WHERE "users"."id" = $1[0m  [["id", 2]]
+[active_model_serializers] Rendered UserLoginSerializer with ActiveModelSerializers::Adapter::Json (0.26ms)
+Completed 200 OK in 92ms (Views: 1.0ms | ActiveRecord: 12.7ms)
+
+
+Started POST "/listings" for 127.0.0.1 at 2017-09-30 16:17:38 -0400
+Processing by ListingsController#create as */*
+  Parameters: {"listing"=>{"user_id"=>"2", "name"=>"data.listing.name", "description"=>"data.listing.description", "price"=>"2.00"}}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35mSQL (5.9ms)[0m  [1m[32mINSERT INTO "listings" ("name", "description", "price", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "data.listing.name"], ["description", "data.listing.description"], ["price", "2.0"], ["created_at", "2017-09-30 20:17:38.647950"], ["updated_at", "2017-09-30 20:17:38.647950"], ["user_id", 2]]
+  [1m[35m (5.7ms)[0m  [1m[35mCOMMIT[0m
+[active_model_serializers] Rendered ListingSerializer with ActiveModelSerializers::Adapter::Json (0.71ms)
+Completed 201 Created in 21ms (Views: 1.5ms | ActiveRecord: 12.1ms)
+
+
+Started POST "/sign-in/" for 127.0.0.1 at 2017-09-30 16:19:01 -0400
+Processing by UsersController#signin as */*
+  Parameters: {"credentials"=>{"email"=>"acarlotto@cox.net", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "acarlotto@cox.net"], ["LIMIT", 1]]
+  [1m[35mSQL (12.2ms)[0m  [1m[33mUPDATE "users" SET "token" = '4a007f72a8f87d9344959ba5dd4abc45', "updated_at" = '2017-09-30 20:19:01.423168' WHERE "users"."id" = $1[0m  [["id", 1]]
+[active_model_serializers] Rendered UserLoginSerializer with ActiveModelSerializers::Adapter::Json (0.27ms)
+Completed 200 OK in 91ms (Views: 0.7ms | ActiveRecord: 12.8ms)
+
+
+Started POST "/listings" for 127.0.0.1 at 2017-09-30 16:19:13 -0400
+Processing by ListingsController#create as */*
+  Parameters: {"listing"=>{"user_id"=>"1", "name"=>"Testing my create listing for user 1", "description"=>"test", "price"=>"2.00"}}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "listings" ("name", "description", "price", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Testing my create listing for user 1"], ["description", "test"], ["price", "2.0"], ["created_at", "2017-09-30 20:19:13.826173"], ["updated_at", "2017-09-30 20:19:13.826173"], ["user_id", 1]]
+  [1m[35m (5.6ms)[0m  [1m[35mCOMMIT[0m
+[active_model_serializers] Rendered ListingSerializer with ActiveModelSerializers::Adapter::Json (0.23ms)
+Completed 201 Created in 12ms (Views: 0.8ms | ActiveRecord: 6.5ms)
+
+
+Started POST "/sign-in/" for 127.0.0.1 at 2017-09-30 16:42:24 -0400
+Processing by UsersController#signin as */*
+  Parameters: {"credentials"=>{"email"=>"acarlotto@cox.net", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (6.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "acarlotto@cox.net"], ["LIMIT", 1]]
+  [1m[35mSQL (18.7ms)[0m  [1m[33mUPDATE "users" SET "token" = 'd8843ae5dd2ab60f145ce6a54771408c', "updated_at" = '2017-09-30 20:42:24.637322' WHERE "users"."id" = $1[0m  [["id", 1]]
+[active_model_serializers] Rendered UserLoginSerializer with ActiveModelSerializers::Adapter::Json (1.62ms)
+Completed 200 OK in 132ms (Views: 4.2ms | ActiveRecord: 25.4ms)
+
+
+Started GET "/listings" for 127.0.0.1 at 2017-09-30 16:45:26 -0400
+Processing by ListingsController#index as */*
+  [1m[36mListing Load (7.6ms)[0m  [1m[34mSELECT "listings".* FROM "listings"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Json (7.93ms)
+Completed 200 OK in 29ms (Views: 19.4ms | ActiveRecord: 7.6ms)
+
+
+Started POST "/sign-in/" for 127.0.0.1 at 2017-09-30 16:45:32 -0400
+Processing by UsersController#signin as */*
+  Parameters: {"credentials"=>{"email"=>"acarlotto@cox.net", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "acarlotto@cox.net"], ["LIMIT", 1]]
+  [1m[35mSQL (5.9ms)[0m  [1m[33mUPDATE "users" SET "token" = '646c14b3380748e7f0c944d87287f586', "updated_at" = '2017-09-30 20:45:32.257409' WHERE "users"."id" = $1[0m  [["id", 1]]
+[active_model_serializers] Rendered UserLoginSerializer with ActiveModelSerializers::Adapter::Json (0.27ms)
+Completed 200 OK in 90ms (Views: 0.8ms | ActiveRecord: 6.2ms)
+
+
+Started GET "/listings" for 127.0.0.1 at 2017-09-30 16:45:34 -0400
+Processing by ListingsController#index as */*
+Started GET "/listings" for 127.0.0.1 at 2017-09-30 16:45:34 -0400
+Processing by ListingsController#index as */*
+  [1m[36mListing Load (0.8ms)[0m  [1m[34mSELECT "listings".* FROM "listings"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Json (2.16ms)
+Completed 200 OK in 8ms (Views: 7.2ms | ActiveRecord: 0.8ms)
+
+
+  [1m[36mListing Load (18.3ms)[0m  [1m[34mSELECT "listings".* FROM "listings"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Json (1.22ms)
+Completed 200 OK in 29ms (Views: 10.7ms | ActiveRecord: 18.3ms)
+
+
+Started GET "/listings" for 127.0.0.1 at 2017-09-30 16:47:24 -0400
+Processing by ListingsController#index as */*
+Started GET "/listings" for 127.0.0.1 at 2017-09-30 16:47:24 -0400
+Started GET "/listings" for 127.0.0.1 at 2017-09-30 16:47:24 -0400
+Processing by ListingsController#index as */*
+Processing by ListingsController#index as */*
+  [1m[36mListing Load (1.8ms)[0m  [1m[34mSELECT "listings".* FROM "listings"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Json (1.47ms)
+Completed 200 OK in 18ms (Views: 15.6ms | ActiveRecord: 1.8ms)
+
+
+  [1m[36mListing Load (14.1ms)[0m  [1m[34mSELECT "listings".* FROM "listings"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Json (1.2ms)
+Completed 200 OK in 17ms (Views: 2.9ms | ActiveRecord: 14.1ms)
+
+
+  [1m[36mListing Load (0.6ms)[0m  [1m[34mSELECT "listings".* FROM "listings"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Json (1.16ms)
+Completed 200 OK in 70ms (Views: 52.0ms | ActiveRecord: 17.9ms)
+
+
+Started POST "/sign-in/" for 127.0.0.1 at 2017-09-30 16:49:27 -0400
+Processing by UsersController#signin as */*
+  Parameters: {"credentials"=>{"email"=>"acarlotto@cox.net", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "acarlotto@cox.net"], ["LIMIT", 1]]
+  [1m[35mSQL (6.7ms)[0m  [1m[33mUPDATE "users" SET "token" = '633047d547bbe23ff1e546461f5e9c48', "updated_at" = '2017-09-30 20:49:27.539404' WHERE "users"."id" = $1[0m  [["id", 1]]
+[active_model_serializers] Rendered UserLoginSerializer with ActiveModelSerializers::Adapter::Json (0.72ms)
+Completed 200 OK in 96ms (Views: 1.3ms | ActiveRecord: 7.2ms)
+
+
+Started GET "/listings" for 127.0.0.1 at 2017-09-30 16:49:30 -0400
+Processing by ListingsController#index as */*
+  [1m[36mListing Load (0.4ms)[0m  [1m[34mSELECT "listings".* FROM "listings"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Json (1.22ms)
+Completed 200 OK in 5ms (Views: 3.7ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/sign-in/" for 127.0.0.1 at 2017-09-30 16:50:55 -0400
+Processing by UsersController#signin as */*
+  Parameters: {"credentials"=>{"email"=>"acarlotto@cox.net", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "acarlotto@cox.net"], ["LIMIT", 1]]
+  [1m[35mSQL (19.0ms)[0m  [1m[33mUPDATE "users" SET "token" = '10d442e81ec51e41a05713dd13ecf2f9', "updated_at" = '2017-09-30 20:50:55.779998' WHERE "users"."id" = $1[0m  [["id", 1]]
+[active_model_serializers] Rendered UserLoginSerializer with ActiveModelSerializers::Adapter::Json (0.26ms)
+Completed 200 OK in 97ms (Views: 0.8ms | ActiveRecord: 20.2ms)
+
+
+Started GET "/listings" for 127.0.0.1 at 2017-09-30 16:50:58 -0400
+Processing by ListingsController#index as */*
+  [1m[36mListing Load (0.5ms)[0m  [1m[34mSELECT "listings".* FROM "listings"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Json (1.43ms)
+Completed 200 OK in 5ms (Views: 3.6ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/sign-in/" for 127.0.0.1 at 2017-09-30 16:51:25 -0400
+Processing by UsersController#signin as */*
+  Parameters: {"credentials"=>{"email"=>"acarlotto@cox.net", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "acarlotto@cox.net"], ["LIMIT", 1]]
+  [1m[35mSQL (7.1ms)[0m  [1m[33mUPDATE "users" SET "token" = '006fe78e208d19747004af4d6f1c78d6', "updated_at" = '2017-09-30 20:51:25.452835' WHERE "users"."id" = $1[0m  [["id", 1]]
+[active_model_serializers] Rendered UserLoginSerializer with ActiveModelSerializers::Adapter::Json (0.26ms)
+Completed 200 OK in 89ms (Views: 0.7ms | ActiveRecord: 8.7ms)
+
+
+Started GET "/listings" for 127.0.0.1 at 2017-09-30 16:51:27 -0400
+Processing by ListingsController#index as */*
+  [1m[36mListing Load (0.5ms)[0m  [1m[34mSELECT "listings".* FROM "listings"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Json (1.18ms)
+Completed 200 OK in 6ms (Views: 5.0ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/sign-in/" for 127.0.0.1 at 2017-09-30 16:51:59 -0400
+Processing by UsersController#signin as */*
+  Parameters: {"credentials"=>{"email"=>"acarlotto@cox.net", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "acarlotto@cox.net"], ["LIMIT", 1]]
+  [1m[35mSQL (6.2ms)[0m  [1m[33mUPDATE "users" SET "token" = '05d14b23b9c26ed80f9f290409390356', "updated_at" = '2017-09-30 20:51:59.946227' WHERE "users"."id" = $1[0m  [["id", 1]]
+[active_model_serializers] Rendered UserLoginSerializer with ActiveModelSerializers::Adapter::Json (0.25ms)
+Completed 200 OK in 86ms (Views: 0.7ms | ActiveRecord: 6.5ms)
+
+
+Started GET "/listings" for 127.0.0.1 at 2017-09-30 16:52:01 -0400
+Processing by ListingsController#index as */*
+  [1m[36mListing Load (2.4ms)[0m  [1m[34mSELECT "listings".* FROM "listings"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Json (5.97ms)
+Completed 200 OK in 14ms (Views: 10.2ms | ActiveRecord: 2.4ms)
+
+
+Started POST "/sign-in/" for 127.0.0.1 at 2017-09-30 16:54:34 -0400
+Processing by UsersController#signin as */*
+  Parameters: {"credentials"=>{"email"=>"acarlotto@cox.net", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "acarlotto@cox.net"], ["LIMIT", 1]]
+  [1m[35mSQL (5.9ms)[0m  [1m[33mUPDATE "users" SET "token" = '852085cb9f70ce9ca38711ed5b17792f', "updated_at" = '2017-09-30 20:54:34.064562' WHERE "users"."id" = $1[0m  [["id", 1]]
+[active_model_serializers] Rendered UserLoginSerializer with ActiveModelSerializers::Adapter::Json (3.71ms)
+Completed 200 OK in 110ms (Views: 6.5ms | ActiveRecord: 6.6ms)
+
+
+Started GET "/listings" for 127.0.0.1 at 2017-09-30 16:54:36 -0400
+Processing by ListingsController#index as */*
+Started GET "/listings" for 127.0.0.1 at 2017-09-30 16:54:36 -0400
+Processing by ListingsController#index as */*
+  [1m[36mListing Load (6.8ms)[0m  [1m[34mSELECT "listings".* FROM "listings"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Json (4.15ms)
+  [1m[36mListing Load (8.2ms)[0m  [1m[34mSELECT "listings".* FROM "listings"[0m
+Completed 200 OK in 17ms (Views: 9.8ms | ActiveRecord: 6.8ms)
+
+
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Json (4.51ms)
+Completed 200 OK in 18ms (Views: 9.9ms | ActiveRecord: 8.2ms)
+
+
+Started POST "/sign-in/" for 127.0.0.1 at 2017-09-30 16:57:22 -0400
+Processing by UsersController#signin as */*
+  Parameters: {"credentials"=>{"email"=>"acarlotto@cox.net", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "acarlotto@cox.net"], ["LIMIT", 1]]
+  [1m[35mSQL (12.2ms)[0m  [1m[33mUPDATE "users" SET "token" = '090bb004ba8aaf9c3a0201a070e1440e', "updated_at" = '2017-09-30 20:57:22.892085' WHERE "users"."id" = $1[0m  [["id", 1]]
+[active_model_serializers] Rendered UserLoginSerializer with ActiveModelSerializers::Adapter::Json (1.68ms)
+Completed 200 OK in 94ms (Views: 2.3ms | ActiveRecord: 13.0ms)
+
+
+Started GET "/listings" for 127.0.0.1 at 2017-09-30 16:57:25 -0400
+Processing by ListingsController#index as */*
+  [1m[36mListing Load (1.9ms)[0m  [1m[34mSELECT "listings".* FROM "listings"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Json (2.29ms)
+Completed 200 OK in 7ms (Views: 4.6ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/listings" for 127.0.0.1 at 2017-09-30 17:03:21 -0400
+Started GET "/listings" for 127.0.0.1 at 2017-09-30 17:03:21 -0400
+Processing by ListingsController#index as */*
+Processing by ListingsController#index as */*
+  [1m[36mListing Load (0.4ms)[0m  [1m[34mSELECT "listings".* FROM "listings"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Json (2.2ms)
+  [1m[36mListing Load (3.7ms)[0m  [1m[34mSELECT "listings".* FROM "listings"[0m
+Completed 200 OK in 8ms (Views: 6.9ms | ActiveRecord: 0.4ms)
+
+
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Json (2.15ms)
+Completed 200 OK in 12ms (Views: 8.5ms | ActiveRecord: 3.7ms)
+
+
+Started GET "/listings" for 127.0.0.1 at 2017-09-30 17:16:42 -0400
+Processing by ListingsController#index as */*
+  [1m[36mListing Load (0.7ms)[0m  [1m[34mSELECT "listings".* FROM "listings"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Json (2.41ms)
+Completed 200 OK in 37ms (Views: 26.3ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/sign-in/" for 127.0.0.1 at 2017-09-30 17:16:56 -0400
+Processing by UsersController#signin as */*
+  Parameters: {"credentials"=>{"email"=>"acarlotto@cox.net", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "acarlotto@cox.net"], ["LIMIT", 1]]
+  [1m[35mSQL (12.1ms)[0m  [1m[33mUPDATE "users" SET "token" = 'ea16820717fbc8577d3c7401bb9c65d5', "updated_at" = '2017-09-30 21:16:56.309038' WHERE "users"."id" = $1[0m  [["id", 1]]
+[active_model_serializers] Rendered UserLoginSerializer with ActiveModelSerializers::Adapter::Json (1.85ms)
+Completed 200 OK in 130ms (Views: 2.7ms | ActiveRecord: 25.8ms)
+
+
+Started GET "/listings" for 127.0.0.1 at 2017-09-30 17:17:00 -0400
+Processing by ListingsController#index as */*
+Started GET "/listings" for 127.0.0.1 at 2017-09-30 17:17:00 -0400
+Processing by ListingsController#index as */*
+  [1m[36mListing Load (0.7ms)[0m  [1m[34mSELECT "listings".* FROM "listings"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Json (1.3ms)
+Completed 200 OK in 6ms (Views: 4.9ms | ActiveRecord: 0.7ms)
+
+
+  [1m[36mListing Load (2.9ms)[0m  [1m[34mSELECT "listings".* FROM "listings"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Json (1.11ms)
+Completed 200 OK in 6ms (Views: 2.5ms | ActiveRecord: 2.9ms)
+
+
+Started GET "/listings" for 127.0.0.1 at 2017-09-30 17:17:41 -0400
+Processing by ListingsController#index as */*
+Completed 500 Internal Server Error in 16ms (ActiveRecord: 0.0ms)
+
+
+  
+NoMethodError (undefined method `id' for nil:NilClass):
+  
+app/controllers/listings_controller.rb:7:in `index'
+Started POST "/sign-in/" for 127.0.0.1 at 2017-09-30 17:18:00 -0400
+Processing by UsersController#signin as */*
+  Parameters: {"credentials"=>{"email"=>"acarlotto@cox.net", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "acarlotto@cox.net"], ["LIMIT", 1]]
+  [1m[35mSQL (19.6ms)[0m  [1m[33mUPDATE "users" SET "token" = '6b71d776d878b678124aa38f86914a62', "updated_at" = '2017-09-30 21:18:00.968787' WHERE "users"."id" = $1[0m  [["id", 1]]
+[active_model_serializers] Rendered UserLoginSerializer with ActiveModelSerializers::Adapter::Json (0.41ms)
+Completed 200 OK in 123ms (Views: 0.9ms | ActiveRecord: 22.1ms)
+
+
+Started GET "/listings" for 127.0.0.1 at 2017-09-30 17:18:04 -0400
+Processing by ListingsController#index as */*
+Started GET "/listings" for 127.0.0.1 at 2017-09-30 17:18:04 -0400
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms)
+
+
+Processing by ListingsController#index as */*
+  
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms)
+
+
+NoMethodError (undefined method `id' for nil:NilClass):
+  
+  
+NoMethodError (undefined method `id' for nil:NilClass):
+app/controllers/listings_controller.rb:7:in `index'
+  
+app/controllers/listings_controller.rb:7:in `index'
+Started GET "/listings/2/" for 127.0.0.1 at 2017-09-30 17:22:11 -0400
+Processing by ListingsController#show as */*
+  Parameters: {"id"=>"2"}
+  [1m[36mListing Load (0.6ms)[0m  [1m[34mSELECT  "listings".* FROM "listings" WHERE "listings"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers] Rendered ListingSerializer with ActiveModelSerializers::Adapter::Json (1.02ms)
+Completed 200 OK in 30ms (Views: 3.8ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/listings" for 127.0.0.1 at 2017-09-30 17:22:22 -0400
+Processing by ListingsController#index as */*
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms)
+
+
+  
+NoMethodError (undefined method `id' for nil:NilClass):
+  
+app/controllers/listings_controller.rb:7:in `index'
+Started GET "/listings/2/" for 127.0.0.1 at 2017-09-30 17:22:50 -0400
+Processing by ListingsController#show as */*
+  Parameters: {"id"=>"2"}
+  [1m[36mListing Load (1.4ms)[0m  [1m[34mSELECT  "listings".* FROM "listings" WHERE "listings"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers] Rendered ListingSerializer with ActiveModelSerializers::Adapter::Json (0.37ms)
+Completed 200 OK in 4ms (Views: 0.8ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/listings" for 127.0.0.1 at 2017-09-30 17:25:58 -0400
+Processing by ListingsController#index as */*
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.0ms)
+
+
+  
+NoMethodError (undefined method `id' for nil:NilClass):
+  
+app/controllers/listings_controller.rb:7:in `index'
+Started POST "/sign-in/" for 127.0.0.1 at 2017-09-30 17:26:04 -0400
+Processing by UsersController#signin as */*
+  Parameters: {"credentials"=>{"email"=>"acarlotto@cox.net", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "acarlotto@cox.net"], ["LIMIT", 1]]
+  [1m[35mSQL (10.6ms)[0m  [1m[33mUPDATE "users" SET "token" = '585c253676296b3aca579aafcfbf839f', "updated_at" = '2017-09-30 21:26:04.980536' WHERE "users"."id" = $1[0m  [["id", 1]]
+[active_model_serializers] Rendered UserLoginSerializer with ActiveModelSerializers::Adapter::Json (0.42ms)
+Completed 200 OK in 115ms (Views: 1.0ms | ActiveRecord: 11.2ms)
+
+
+Started GET "/listings" for 127.0.0.1 at 2017-09-30 17:26:07 -0400
+Processing by ListingsController#index as */*
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms)
+
+
+  
+NoMethodError (undefined method `id' for nil:NilClass):
+  
+Started GET "/listings" for 127.0.0.1 at 2017-09-30 17:26:07 -0400
+app/controllers/listings_controller.rb:7:in `index'
+Processing by ListingsController#index as */*
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms)
+
+
+  
+NoMethodError (undefined method `id' for nil:NilClass):
+  
+app/controllers/listings_controller.rb:7:in `index'
+Started GET "/listings" for 127.0.0.1 at 2017-09-30 17:26:11 -0400
+Processing by ListingsController#index as */*
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms)
+
+
+  
+NoMethodError (undefined method `id' for nil:NilClass):
+  
+app/controllers/listings_controller.rb:7:in `index'
+Started GET "/listings" for 127.0.0.1 at 2017-09-30 17:27:32 -0400
+Processing by ListingsController#index as */*
+  [1m[36mListing Load (12.3ms)[0m  [1m[34mSELECT "listings".* FROM "listings"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Json (1.57ms)
+Completed 200 OK in 32ms (Views: 12.6ms | ActiveRecord: 12.3ms)
+
+
+Started POST "/sign-in/" for 127.0.0.1 at 2017-09-30 17:47:04 -0400
+Processing by UsersController#signin as */*
+  Parameters: {"credentials"=>{"email"=>"acarlotto@cox.net", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (30.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "acarlotto@cox.net"], ["LIMIT", 1]]
+  [1m[35mSQL (28.6ms)[0m  [1m[33mUPDATE "users" SET "token" = '2135330051b1fbcaba973c3d09f1362d', "updated_at" = '2017-09-30 21:47:05.035031' WHERE "users"."id" = $1[0m  [["id", 1]]
+[active_model_serializers] Rendered UserLoginSerializer with ActiveModelSerializers::Adapter::Json (3.19ms)
+Completed 200 OK in 201ms (Views: 4.2ms | ActiveRecord: 59.0ms)
+
+
+Started GET "/listings/" for 127.0.0.1 at 2017-09-30 17:47:08 -0400
+Started GET "/listings/" for 127.0.0.1 at 2017-09-30 17:47:08 -0400
+Processing by ListingsController#index as */*
+Processing by ListingsController#index as */*
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.0ms)
+
+
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.0ms)
+
+
+  
+  
+NoMethodError (undefined method `id' for nil:NilClass):
+NoMethodError (undefined method `id' for nil:NilClass):
+  
+  
+app/controllers/listings_controller.rb:7:in `index'
+app/controllers/listings_controller.rb:7:in `index'
+Started POST "/sign-in/" for 127.0.0.1 at 2017-09-30 17:48:46 -0400
+Processing by UsersController#signin as */*
+  Parameters: {"credentials"=>{"email"=>"acarlotto@cox.net", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "acarlotto@cox.net"], ["LIMIT", 1]]
+  [1m[35mSQL (6.5ms)[0m  [1m[33mUPDATE "users" SET "token" = '13f2ed6a9d78559fb8c351c0c2f48e02', "updated_at" = '2017-09-30 21:48:46.261384' WHERE "users"."id" = $1[0m  [["id", 1]]
+[active_model_serializers] Rendered UserLoginSerializer with ActiveModelSerializers::Adapter::Json (0.48ms)
+Completed 200 OK in 110ms (Views: 1.1ms | ActiveRecord: 7.0ms)
+
+
+Started GET "/listings/" for 127.0.0.1 at 2017-09-30 17:48:48 -0400
+Processing by ListingsController#index as */*
+Started GET "/listings/" for 127.0.0.1 at 2017-09-30 17:48:48 -0400
+Processing by ListingsController#index as */*
+  [1m[36mListing Load (23.6ms)[0m  [1m[34mSELECT "listings".* FROM "listings"[0m
+  [1m[36mListing Load (23.1ms)[0m  [1m[34mSELECT "listings".* FROM "listings"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Json (1.9ms)
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Json (1.21ms)
+Completed 200 OK in 65ms (Views: 16.3ms | ActiveRecord: 45.5ms)
+
+
+Completed 200 OK in 61ms (Views: 20.3ms | ActiveRecord: 40.5ms)
+
+
+Started GET "/listings/2/" for 127.0.0.1 at 2017-09-30 17:51:24 -0400
+Processing by ListingsController#show as */*
+  Parameters: {"id"=>"2"}
+  [1m[36mListing Load (0.3ms)[0m  [1m[34mSELECT  "listings".* FROM "listings" WHERE "listings"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE Listing Load (0.0ms)[0m  [1m[34mSELECT  "listings".* FROM "listings" WHERE "listings"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers] Rendered ListingSerializer with ActiveModelSerializers::Adapter::Json (0.57ms)
+Completed 200 OK in 19ms (Views: 2.1ms | ActiveRecord: 4.8ms)
+
+
+Started GET "/listings//2" for 127.0.0.1 at 2017-09-30 17:53:56 -0400
+Processing by ListingsController#show as */*
+  Parameters: {"id"=>"2"}
+  [1m[36mListing Load (0.4ms)[0m  [1m[34mSELECT  "listings".* FROM "listings" WHERE "listings"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE Listing Load (0.0ms)[0m  [1m[34mSELECT  "listings".* FROM "listings" WHERE "listings"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers] Rendered ListingSerializer with ActiveModelSerializers::Adapter::Json (1.35ms)
+Completed 200 OK in 13ms (Views: 3.1ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/sign-in/" for 127.0.0.1 at 2017-09-30 17:55:19 -0400
+Processing by UsersController#signin as */*
+  Parameters: {"credentials"=>{"email"=>"acarlotto@cox.net", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "acarlotto@cox.net"], ["LIMIT", 1]]
+  [1m[35mSQL (13.0ms)[0m  [1m[33mUPDATE "users" SET "token" = 'c063a0bb630ce12d273b807975c50085', "updated_at" = '2017-09-30 21:55:19.909796' WHERE "users"."id" = $1[0m  [["id", 1]]
+[active_model_serializers] Rendered UserLoginSerializer with ActiveModelSerializers::Adapter::Json (0.58ms)
+Completed 200 OK in 149ms (Views: 1.4ms | ActiveRecord: 35.0ms)
+
+
+Started GET "/listings/1" for 127.0.0.1 at 2017-09-30 17:55:22 -0400
+Processing by ListingsController#show as */*
+  Parameters: {"id"=>"1"}
+Started GET "/listings/1" for 127.0.0.1 at 2017-09-30 17:55:22 -0400
+Processing by ListingsController#show as */*
+  [1m[36mListing Load (1.2ms)[0m  [1m[34mSELECT  "listings".* FROM "listings" WHERE "listings"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Parameters: {"id"=>"1"}
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (1.09ms)
+Completed 404 Not Found in 14ms (Views: 11.1ms | ActiveRecord: 1.2ms)
+
+
+  [1m[36mListing Load (0.5ms)[0m  [1m[34mSELECT  "listings".* FROM "listings" WHERE "listings"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.16ms)
+Completed 404 Not Found in 3ms (Views: 0.6ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/sign-in/" for 127.0.0.1 at 2017-09-30 17:56:51 -0400
+Processing by UsersController#signin as */*
+  Parameters: {"credentials"=>{"email"=>"acarlotto@cox.net", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "acarlotto@cox.net"], ["LIMIT", 1]]
+  [1m[35mSQL (12.3ms)[0m  [1m[33mUPDATE "users" SET "token" = 'e64c9bc950017b36796c8028f9d638ab', "updated_at" = '2017-09-30 21:56:51.582579' WHERE "users"."id" = $1[0m  [["id", 1]]
+[active_model_serializers] Rendered UserLoginSerializer with ActiveModelSerializers::Adapter::Json (0.21ms)
+Completed 200 OK in 92ms (Views: 0.7ms | ActiveRecord: 13.0ms)
+
+
+Started GET "/listings/1" for 127.0.0.1 at 2017-09-30 17:56:53 -0400
+Started GET "/listings/1" for 127.0.0.1 at 2017-09-30 17:56:53 -0400
+Processing by ListingsController#show as */*
+Processing by ListingsController#show as */*
+  Parameters: {"id"=>"1"}
+  Parameters: {"id"=>"1"}
+  [1m[36mListing Load (0.5ms)[0m  [1m[34mSELECT  "listings".* FROM "listings" WHERE "listings"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.43ms)
+  [1m[36mListing Load (2.3ms)[0m  [1m[34mSELECT  "listings".* FROM "listings" WHERE "listings"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 404 Not Found in 4ms (Views: 1.0ms | ActiveRecord: 0.5ms)
+
+
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.05ms)
+Completed 404 Not Found in 6ms (Views: 0.6ms | ActiveRecord: 2.3ms)
+
+
+Started POST "/sign-in/" for 127.0.0.1 at 2017-09-30 17:58:05 -0400
+Processing by UsersController#signin as */*
+  Parameters: {"credentials"=>{"email"=>"acarlotto@cox.net", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "acarlotto@cox.net"], ["LIMIT", 1]]
+  [1m[35mSQL (12.4ms)[0m  [1m[33mUPDATE "users" SET "token" = 'f7a63b12f15667ae9dc6792e5a049568', "updated_at" = '2017-09-30 21:58:05.902102' WHERE "users"."id" = $1[0m  [["id", 1]]
+[active_model_serializers] Rendered UserLoginSerializer with ActiveModelSerializers::Adapter::Json (0.54ms)
+Completed 200 OK in 92ms (Views: 1.2ms | ActiveRecord: 12.7ms)
+
+
+Started GET "/listings/1" for 127.0.0.1 at 2017-09-30 17:58:07 -0400
+Processing by ListingsController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mListing Load (0.5ms)[0m  [1m[34mSELECT  "listings".* FROM "listings" WHERE "listings"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.14ms)
+Completed 404 Not Found in 2ms (Views: 0.6ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/sign-in/" for 127.0.0.1 at 2017-09-30 18:00:39 -0400
+Processing by UsersController#signin as */*
+  Parameters: {"credentials"=>{"email"=>"a", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "a"], ["LIMIT", 1]]
+Completed 401 Unauthorized in 4ms (ActiveRecord: 0.5ms)
+
+
+Started POST "/sign-in/" for 127.0.0.1 at 2017-09-30 18:00:46 -0400
+Processing by UsersController#signin as */*
+  Parameters: {"credentials"=>{"email"=>"acarlotto@cox.net", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "acarlotto@cox.net"], ["LIMIT", 1]]
+  [1m[35mSQL (2.9ms)[0m  [1m[33mUPDATE "users" SET "token" = '5a203797a877d8a6d51fceee5b9206b4', "updated_at" = '2017-09-30 22:00:46.392552' WHERE "users"."id" = $1[0m  [["id", 1]]
+[active_model_serializers] Rendered UserLoginSerializer with ActiveModelSerializers::Adapter::Json (2.27ms)
+Completed 200 OK in 81ms (Views: 2.8ms | ActiveRecord: 3.3ms)
+
+
+Started GET "/listings/" for 127.0.0.1 at 2017-09-30 18:00:48 -0400
+Processing by ListingsController#index as */*
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms)
+
+
+  
+NoMethodError (undefined method `id' for nil:NilClass):
+  
+app/controllers/listings_controller.rb:7:in `index'
+Started POST "/sign-in/" for 127.0.0.1 at 2017-09-30 18:02:27 -0400
+Processing by UsersController#signin as */*
+  Parameters: {"credentials"=>{"email"=>"acarlotto@cox.net", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "acarlotto@cox.net"], ["LIMIT", 1]]
+  [1m[35mSQL (6.0ms)[0m  [1m[33mUPDATE "users" SET "token" = '989ab82de00df1e1913d2abae4c7e45c', "updated_at" = '2017-09-30 22:02:27.011629' WHERE "users"."id" = $1[0m  [["id", 1]]
+[active_model_serializers] Rendered UserLoginSerializer with ActiveModelSerializers::Adapter::Json (0.22ms)
+Completed 200 OK in 83ms (Views: 0.8ms | ActiveRecord: 6.7ms)
+
+
+Started GET "/listings/" for 127.0.0.1 at 2017-09-30 18:02:30 -0400
+Processing by ListingsController#index as */*
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms)
+
+
+  
+NoMethodError (undefined method `id' for nil:NilClass):
+  
+app/controllers/listings_controller.rb:7:in `index'
+Started POST "/sign-in/" for 127.0.0.1 at 2017-09-30 18:02:50 -0400
+Processing by UsersController#signin as */*
+  Parameters: {"credentials"=>{"email"=>"acarlotto@cox.net", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "acarlotto@cox.net"], ["LIMIT", 1]]
+  [1m[35mSQL (12.5ms)[0m  [1m[33mUPDATE "users" SET "token" = 'f48675aefeb8aba4f34a4c32562bb2c6', "updated_at" = '2017-09-30 22:02:50.341771' WHERE "users"."id" = $1[0m  [["id", 1]]
+[active_model_serializers] Rendered UserLoginSerializer with ActiveModelSerializers::Adapter::Json (0.24ms)
+Completed 200 OK in 90ms (Views: 0.9ms | ActiveRecord: 12.7ms)
+
+
+Started GET "/listings/" for 127.0.0.1 at 2017-09-30 18:02:53 -0400
+Processing by ListingsController#index as */*
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms)
+
+
+  
+NoMethodError (undefined method `id' for nil:NilClass):
+  
+app/controllers/listings_controller.rb:7:in `index'
+Started POST "/sign-in/" for 127.0.0.1 at 2017-09-30 18:13:18 -0400
+Processing by UsersController#signin as */*
+  Parameters: {"credentials"=>{"email"=>"acarlotto@cox.net", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "acarlotto@cox.net"], ["LIMIT", 1]]
+  [1m[35mSQL (4.7ms)[0m  [1m[33mUPDATE "users" SET "token" = 'acf4a88a422f8082906abe271e9fc26c', "updated_at" = '2017-09-30 22:13:18.648058' WHERE "users"."id" = $1[0m  [["id", 1]]
+[active_model_serializers] Rendered UserLoginSerializer with ActiveModelSerializers::Adapter::Json (0.91ms)
+Completed 200 OK in 134ms (Views: 2.3ms | ActiveRecord: 10.9ms)
+
+
+Started GET "/listings/" for 127.0.0.1 at 2017-09-30 18:13:21 -0400
+Processing by ListingsController#index as */*
+  [1m[36mUser Load (3.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "acf4a88a422f8082906abe271e9fc26c"], ["LIMIT", 1]]
+  [1m[36mListing Load (0.4ms)[0m  [1m[34mSELECT "listings".* FROM "listings"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Json (3.13ms)
+Completed 200 OK in 28ms (Views: 17.4ms | ActiveRecord: 3.9ms)
+
+
+Started POST "/sign-in/" for 127.0.0.1 at 2017-09-30 18:23:39 -0400
+Processing by UsersController#signin as */*
+  Parameters: {"credentials"=>{"email"=>"acarlotto@cox.net", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "acarlotto@cox.net"], ["LIMIT", 1]]
+  [1m[35mSQL (12.4ms)[0m  [1m[33mUPDATE "users" SET "token" = 'b59894a270ad5107ea582a3a4faac39f', "updated_at" = '2017-09-30 22:23:39.751476' WHERE "users"."id" = $1[0m  [["id", 1]]
+[active_model_serializers] Rendered UserLoginSerializer with ActiveModelSerializers::Adapter::Json (0.49ms)
+Completed 200 OK in 120ms (Views: 1.4ms | ActiveRecord: 13.0ms)
+
+
+Started GET "/listings/" for 127.0.0.1 at 2017-09-30 18:23:41 -0400
+Started GET "/listings/" for 127.0.0.1 at 2017-09-30 18:23:41 -0400
+Processing by ListingsController#index as */*
+Processing by ListingsController#index as */*
+  [1m[36mUser Load (5.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "b59894a270ad5107ea582a3a4faac39f"], ["LIMIT", 1]]
+  [1m[36mUser Load (14.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "b59894a270ad5107ea582a3a4faac39f"], ["LIMIT", 1]]
+  [1m[36mListing Load (3.3ms)[0m  [1m[34mSELECT "listings".* FROM "listings" WHERE (user_id = 1)[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Json (3.49ms)
+Completed 200 OK in 43ms (Views: 20.1ms | ActiveRecord: 17.8ms)
+
+
+  [1m[36mListing Load (25.9ms)[0m  [1m[34mSELECT "listings".* FROM "listings" WHERE (user_id = 1)[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Json (0.92ms)
+Completed 200 OK in 44ms (Views: 3.1ms | ActiveRecord: 30.9ms)
+
+
+Started POST "/sign-in/" for 127.0.0.1 at 2017-09-30 18:24:29 -0400
+Processing by UsersController#signin as */*
+  Parameters: {"credentials"=>{"email"=>"tcarlotto@cox.net", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (6.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "tcarlotto@cox.net"], ["LIMIT", 1]]
+  [1m[35mSQL (6.6ms)[0m  [1m[33mUPDATE "users" SET "token" = 'a911eadb5adb32091fc7b57bc7ecb52b', "updated_at" = '2017-09-30 22:24:29.804459' WHERE "users"."id" = $1[0m  [["id", 2]]
+[active_model_serializers] Rendered UserLoginSerializer with ActiveModelSerializers::Adapter::Json (0.35ms)
+Completed 200 OK in 91ms (Views: 0.8ms | ActiveRecord: 13.0ms)
+
+
+Started GET "/listings/" for 127.0.0.1 at 2017-09-30 18:24:33 -0400
+Processing by ListingsController#index as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "a911eadb5adb32091fc7b57bc7ecb52b"], ["LIMIT", 1]]
+  [1m[36mListing Load (0.3ms)[0m  [1m[34mSELECT "listings".* FROM "listings" WHERE (user_id = 2)[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Json (0.76ms)
+Completed 200 OK in 4ms (Views: 2.0ms | ActiveRecord: 0.7ms)
+
+

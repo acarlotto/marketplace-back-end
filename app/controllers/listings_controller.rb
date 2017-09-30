@@ -1,10 +1,10 @@
-class ListingsController < ApplicationController
+class ListingsController < ProtectedController
   before_action :set_listing, only: [:show, :update, :destroy]
-  before_action :set_listings, only: [:index]
+  # before_action :set_listings, only: [:index]
   # GET /listings
   def index
-    @listings = Listing.all
-    # @listings = Listing.where('user_id = ?', current_user.id)
+    # @listings = Listing.all
+    @listings = Listing.where('user_id = ?', current_user.id)
 
     render json: @listings
   end
@@ -47,13 +47,13 @@ class ListingsController < ApplicationController
       @listing = Listing.find(params[:id])
     end
 
-    def set_listings
-      @listings = Listing.all
-    end
+    # def set_listings
+    #   @listings = Listing.all
+    # end
 
-    def set_user
-      @user_id = Listing.find(params[:listing['user_id']])
-    end
+    # def set_user
+    #   @user_id = Listing.find(params[:listing['user_id']])
+    # end
 
     # Only allow a trusted parameter "white list" through.
     def listing_params
