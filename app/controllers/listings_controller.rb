@@ -1,6 +1,8 @@
 class ListingsController < ProtectedController
   before_action :set_listing, only: [:show]
+  before_action :set_id, only: [:update]
   # before_action :set_listings, only: [:index]
+
   # GET /listings
   def index
     @listings = Listing.all
@@ -29,6 +31,7 @@ class ListingsController < ProtectedController
   # PATCH/PUT /listings/1
   def update
     if @listing.update(listing_params)
+      #  @listing = Listing.find(params[:id])
       render json: @listing
     else
       render json: @listing.errors, status: :unprocessable_entity
@@ -48,6 +51,9 @@ class ListingsController < ProtectedController
       # @listing = Listing.find(params[:id])
     end
 
+    def set_id
+      @listing = Listing.find(params[:id])
+    end
     # def set_listings
     #   @listings = Listing.all
     # end
