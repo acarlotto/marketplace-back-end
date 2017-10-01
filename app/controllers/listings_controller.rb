@@ -3,8 +3,7 @@ class ListingsController < ProtectedController
   # before_action :set_listings, only: [:index]
   # GET /listings
   def index
-    # @listings = Listing.all
-    @listings = Listing.where('user_id = ?', current_user.id)
+    @listings = Listing.all
 
     render json: @listings
   end
@@ -44,7 +43,8 @@ class ListingsController < ProtectedController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_listing
-      @listing = Listing.find(params[:id])
+      @listing = Listing.where('user_id = ?', current_user.id)
+      # @listing = Listing.find(params[:id])
     end
 
     # def set_listings
