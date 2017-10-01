@@ -1,5 +1,5 @@
 class ListingsController < ProtectedController
-  before_action :set_listing, only: [:show, :update, :destroy]
+  before_action :set_listing, only: [:show]
   # before_action :set_listings, only: [:index]
   # GET /listings
   def index
@@ -37,6 +37,7 @@ class ListingsController < ProtectedController
 
   # DELETE /listings/1
   def destroy
+    @listing = Listing.find(params[:id])
     @listing.destroy
   end
 
